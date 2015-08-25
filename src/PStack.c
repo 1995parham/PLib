@@ -37,6 +37,9 @@ void plib_stack_push(struct PStack *s, void *data)
 
 void *plib_stack_pop(struct PStack *s)
 {
+	if (s->size == 0)
+		return NULL;
+
 	void *data = s->head->data;
 	struct PNode *tmp = s->head;
 
