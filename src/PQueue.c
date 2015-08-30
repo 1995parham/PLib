@@ -43,6 +43,10 @@ void plib_queue_push(struct PQueue *q, void *data)
 
 void *plib_queue_pop(struct PQueue *q)
 {
+	if (q->size == 0) {
+		return NULL;
+	}
+
 	void *data = q->head->data;
 	struct PNode *tmp = q->head;
 
