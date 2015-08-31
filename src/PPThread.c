@@ -80,4 +80,10 @@ void plib_ppthread_destroy(struct PPThread *pt)
 {
 	plib_ppthread_wait(pt);
 	free(pt->t);
+	while (plib_aqueue_size(pt->q) > 0) {
+		void *data = plib_aqueue_pop(pt->q);
+		free(data);
+	}
+	plib_aqueue_delete(pt->q);
+	free(pt);
 }
