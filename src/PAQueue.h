@@ -47,7 +47,6 @@ size_t plib_aqueue_size(struct PAQueue *aq);
 /*
  *
  */
-void plib_aqueue_foreach(struct PAQueue *aq, void *user_data, PFunc func);
-
+void plib_aqueue_delete(struct PAQueue *aq);
 
 #endif

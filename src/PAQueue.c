@@ -49,3 +49,13 @@ size_t plib_aqueue_size(struct PAQueue *aq)
 	pthread_mutex_unlock(aq->qlock);
 	return size;
 }
+
+void plib_aqueue_delete(struct PAQueue *aq)
+{
+	pthread_mutex_lock(aq->qlock);
+	plib_queue_delete(aq->q);
+	pthread_mutex_unlock(aq->qlock);
+	pthread_mutex_destroy(aq->qlock);
+	free(aq->qlock);
+	free(aq);
+}
