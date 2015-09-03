@@ -25,7 +25,7 @@
 void *reader(void *p)
 {
 	struct PAQueue *aq = (struct PAQueue *) p;
-	while(!plib_aqueue_size(aq));
+	while (!plib_aqueue_size(aq));
 	printf("reader: %d\n", POINTER_TO_INT(plib_aqueue_pop(aq)));
 	pthread_exit(NULL);
 }
@@ -37,7 +37,7 @@ void *writer(void *p)
 	pthread_exit(NULL);
 }
 
-void *helloer(void *p)
+void *hello(void *p)
 {
 	int integer = POINTER_TO_INT(p);
 	printf("Hello from %d\n", integer);
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 	{
 		struct PAQueue *aq = plib_aqueue_new();
 		pthread_t t1, t2;
-	
+
 		pthread_create(&t1, NULL, reader, aq);
 		pthread_create(&t2, NULL, writer, aq);
 		pthread_join(t1, NULL);
@@ -80,10 +80,10 @@ int main(int argc, char *argv[])
 	/* PPThread Power :) */
 	{
 		struct PPThread *pt = plib_ppthread_create(2);
-		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(1));
-		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(2));
-		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(3));
-		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(4));
+		plib_ppthread_add_work(pt, hello, INT_TO_POINTER(1));
+		plib_ppthread_add_work(pt, hello, INT_TO_POINTER(2));
+		plib_ppthread_add_work(pt, hello, INT_TO_POINTER(3));
+		plib_ppthread_add_work(pt, hello, INT_TO_POINTER(4));
 		plib_ppthread_start(pt);
 		plib_ppthread_wait(pt);
 	}
