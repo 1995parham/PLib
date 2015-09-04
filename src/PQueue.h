@@ -44,4 +44,6 @@ void *plib_queue_pop(struct PQueue *q);
 void plib_queue_foreach(struct PQueue *q, void *user_data, PFunc func);
 
 
+void plib_queue_delete(struct PQueue *q);
+
 #endif

@@ -44,8 +44,11 @@ void plib_queue_push(struct PQueue *q, void *data)
 void *plib_queue_pop(struct PQueue *q)
 {
 	void *data = q->head->data;
+	struct PNode *tmp = q->head;
 
 	q->head = q->head->next;
+
+	free(tmp);
 
 	q->size--;
 
@@ -62,4 +65,16 @@ void plib_queue_foreach(struct PQueue *q, void *user_data, PFunc func)
 		func(c->data, user_data);
 		c = c->next;
 	}
+}
+
+void plib_queue_delete(struct PQueue *q)
+{
+	struct PNode *c = q->head;
+	while (c != NULL) {
+		struct PNode *tmp;
+		tmp = c;
+		c = c->next;
+		free(tmp);
+	}
+	free(q);
 }
