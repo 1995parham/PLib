@@ -20,6 +20,7 @@
 
 struct PWork {
 	void *(*work)(void *);
+
 	void *data;
 };
 
@@ -34,7 +35,8 @@ static void *plib_ppthread_main(void *p)
 			if (pthread_kill(pt->t[i], 0) != 0) {
 				pthread_join(pt->t[i], NULL);
 				struct PWork *w = plib_aqueue_pop(pt->q);
-				pthread_create(&(pt->t)[i], NULL, w->work, w->data);
+				pthread_create(&(pt->t)[i], NULL, w->work,
+					w->data);
 				free(w);
 			}
 		}
@@ -55,7 +57,8 @@ void plib_ppthread_start(struct PPThread *pt)
 	pthread_create(&pt->m, NULL, plib_ppthread_main, pt);
 }
 
-void plib_ppthread_add_work(struct PPThread *pt, void *(*work)(void *), void *data)
+void plib_ppthread_add_work(struct PPThread *pt, void *(*work)(void *),
+	void *data)
 {
 	struct PWork *w = malloc(sizeof(struct PWork));
 	w->work = work;
@@ -69,10 +72,12 @@ void plib_ppthread_wait(struct PPThread *pt)
 	pthread_join(pt->m, NULL);
 	int i;
 	for (i = 0; i < pt->s; i++) {
-		pthread_join(pt->t[i], NULL);	
+		pthread_join(pt->t[i], NULL);
 	}
 }
 
 void plib_ppthread_destroy(struct PPThread *pt)
 {
+	plib_ppthread_wait(pt);
+	free(pt->t);
 }
