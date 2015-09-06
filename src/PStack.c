@@ -38,8 +38,11 @@ void plib_stack_push(struct PStack *s, void *data)
 void *plib_stack_pop(struct PStack *s)
 {
 	void *data = s->head->data;
+	struct PNode *tmp = s->head;
 
 	s->head = s->head->next;
+
+	free(tmp);
 
 	s->size--;
 
@@ -53,4 +56,16 @@ void plib_stack_foreach(struct PStack *s, void *user_data, PFunc func)
 		func(c->data, user_data);
 		c = c->next;
 	}
+}
+
+void plib_stack_delete(struct PStack *s)
+{
+	struct PNode *c = s->head;
+	while (c != NULL) {
+		struct PNode *tmp;
+		tmp = c;
+		c = c->next;
+		free(tmp);
+	}
+	free(s);
 }

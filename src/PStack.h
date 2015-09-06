@@ -42,4 +42,9 @@ void *plib_stack_pop(struct PStack *s);
  */
 void plib_stack_foreach(struct PStack *s, void *user_data, PFunc func);
 
+/*
+ *
+ */
+void plib_stack_delete(struct PStack *s);
+
 #endif
