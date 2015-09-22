@@ -17,8 +17,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 add_subdirectory(src)
 
 # The version number
-set(TLisp_MAJOR_VERSION 1)
-set(TLisp_MINOR_VERSION 0)
+set(PLib_MAJOR_VERSION 1)
+set(Plib_MINOR_VERSION 0)
 
 # Add personal c flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O0 -g -std=gnu11 ")
