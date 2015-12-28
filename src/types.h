@@ -1,7 +1,7 @@
 /*
  * In The Name Of God
  * ========================================
- * [] File Name : types
+ * [] File Name : types.h
  *
  * [] Creation Date : 28-12-2015
  *

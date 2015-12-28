@@ -1,7 +1,7 @@
 /*
  * In The Name Of God
  * ========================================
- * [] File Name : stack
+ * [] File Name : PStack.c
  *
  * [] Creation Date : 28-12-2015
  *

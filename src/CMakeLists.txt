@@ -6,8 +6,8 @@
 #
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
-add_library(PLib PStack.c PStack.h types.h)
-add_executable(Plib.out main.c PStack.c PStack.h types.h)
+add_library(PLib PStack.c PStack.h types.h log.c log.h)
+add_executable(Plib.out main.c PStack.c PStack.h types.h log.c log.c)
 
 
 # Add personal c flags
