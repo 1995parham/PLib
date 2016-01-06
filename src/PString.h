@@ -15,6 +15,7 @@
 #ifndef PLIB_PSTRING_H
 #define PLIB_PSTRING_H
 
-int plib_string_tokenizer(const char *source, const char *token);
+int plib_string_tokenizer(const char *source, const char *token,
+	char ***result);
 
 #endif
