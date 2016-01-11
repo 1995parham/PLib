@@ -6,9 +6,9 @@
 #
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
-add_library(PLib PStack.c PStack.h types.h log.c log.h
+add_library(PLib PStack.c PStack.h types.h PLog.c PLog.h
         PString.c PString.h)
-add_executable(Plib.out main.c PStack.c PStack.h types.h log.c log.c
+add_executable(Plib.out main.c PStack.c PStack.h types.h PLog.c PLog.c
         PString.c PString.h)
 
 

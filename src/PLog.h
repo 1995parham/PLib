@@ -11,8 +11,12 @@
 /*
  * Copyright (c) 2015 Parham Alvani.
 */
-#ifndef PLIB_LOG_H
-#define PLIB_LOG_H
+#ifndef PLIB_PLOG_H
+#define PLIB_PLOG_H
+
+typedef void (*PExitHandler)(void *data);
+
+void plib_register_exit_handler(PExitHandler handler, void *data, int free);
 
 void plib_sdie(const char *fmt, ...)
 	__attribute__((format(printf, 1, 2)));
