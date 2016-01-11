@@ -13,6 +13,7 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 #include "PStack.h"
 #include "PString.h"
 #include "types.h"
@@ -40,5 +41,11 @@ int main(int argc, char *argv[])
 		for (i = 0; i < number; i++) {
 			printf("%s\n", result[i]);
 		}
+
+		char password[50];
+		printf("Enter your password: ");
+		plib_fgetpass(password, sizeof(password), stdin);
+		password[strlen(password) - 1] = 0;
+		printf("U enter: %s", password);
 	}
 }

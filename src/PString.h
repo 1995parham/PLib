@@ -18,4 +18,6 @@
 int plib_string_tokenizer(const char *source, const char *token,
 	char ***result);
 
+char *plib_fgetpass(char *s, int size, FILE *stream);
+
 #endif

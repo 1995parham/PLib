@@ -14,16 +14,16 @@
 #ifndef PLIB_LOG_H
 #define PLIB_LOG_H
 
-void sdie(const char *fmt, ...)
+void plib_sdie(const char *fmt, ...)
 	__attribute__((format(printf, 1, 2)));
 
-void udie(const char *fmt, ...)
+void plib_udie(const char *fmt, ...)
 	__attribute__((format(printf, 1, 2)));
 
-void ulog(const char *fmt, ...)
+void plib_ulog(const char *fmt, ...)
 	__attribute__((format(printf, 1, 2)));
 
-void slog(const char *fmt, ...)
+void plib_slog(const char *fmt, ...)
 	__attribute__((format(printf, 1, 2)));
 
 #endif

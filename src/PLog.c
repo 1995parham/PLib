@@ -17,11 +17,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "log.h"
+#include "PLog.h"
 
 #define MAX_BUFF 1000*1000
 
-void sdie(const char *fmt, ...)
+void plib_sdie(const char *fmt, ...)
 {
 	char buf[MAX_BUFF];
 	va_list args;
@@ -34,7 +34,7 @@ void sdie(const char *fmt, ...)
 	exit(EXIT_FAILURE);
 }
 
-void udie(const char *fmt, ...)
+void plib_udie(const char *fmt, ...)
 {
 	char buf[MAX_BUFF];
 	va_list args;
@@ -52,7 +52,7 @@ void udie(const char *fmt, ...)
 	exit(EXIT_FAILURE);
 }
 
-void slog(const char *fmt, ...)
+void plib_slog(const char *fmt, ...)
 {
 #ifdef DEBUG
 	fprintf(stderr, "DEBUG: ");
@@ -69,7 +69,7 @@ void slog(const char *fmt, ...)
 #endif
 }
 
-void ulog(const char *fmt, ...)
+void plib_ulog(const char *fmt, ...)
 {
 #ifdef DEBUG
 	fprintf(stderr, "DEBUG: ");
