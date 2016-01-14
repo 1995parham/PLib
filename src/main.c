@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "PStack.h"
+#include "PQueue.h"
 #include "PString.h"
 #include "types.h"
 
@@ -30,6 +31,15 @@ int main(int argc, char *argv[])
 		plib_stack_push(s, INT_TO_POINTER(20));
 		plib_stack_push(s, INT_TO_POINTER(30));
 		printf("%d\n", POINTER_TO_INT(plib_stack_pop(s)));
+	}
+
+	/* PQueue Power :) */
+	{
+		struct PQueue *q = plib_queue_new();
+		plib_queue_push(q, INT_TO_POINTER(10));
+		plib_queue_push(q, INT_TO_POINTER(20));
+		plib_queue_push(q, INT_TO_POINTER(30));
+		printf("%d\n", POINTER_TO_INT(plib_queue_pop(q)));
 	}
 
 	/* PString Power :) */
