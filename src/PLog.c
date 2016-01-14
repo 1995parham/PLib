@@ -77,10 +77,6 @@ void plib_udie(const char *fmt, ...)
 
 void plib_slog(const char *fmt, ...)
 {
-#ifdef DEBUG
-	fprintf(stderr, "DEBUG: ");
-	fflush(stdout);
-
 	char buf[MAX_BUFF];
 	va_list args;
 
@@ -89,15 +85,10 @@ void plib_slog(const char *fmt, ...)
 	va_end(args);
 
 	perror(buf);
-#endif
 }
 
 void plib_ulog(const char *fmt, ...)
 {
-#ifdef DEBUG
-	fprintf(stderr, "DEBUG: ");
-	fflush(stdout);
-
 	char buf[MAX_BUFF];
 	va_list args;
 
@@ -111,7 +102,6 @@ void plib_ulog(const char *fmt, ...)
 	buf[len + 1] = 0;
 
 	fputs(buf, stderr);
-#endif
 }
 
 void plib_register_exit_handler(PExitHandler handler, void *data, int free)
