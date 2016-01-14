@@ -1,7 +1,7 @@
 /*
  * In The Name Of God
  * ========================================
- * [] File Name : types.h
+ * [] File Name : PTypes.h
  *
  * [] Creation Date : 28-12-2015
  *
@@ -11,8 +11,8 @@
 /*
  * Copyright (c) 2015 Parham Alvani.
 */
-#ifndef PLIB_TYPES_H
-#define PLIB_TYPES_H
+#ifndef PLIB_PTYPES_H
+#define PLIB_PTYPES_H
 
 #define INT_TO_POINTER(i) ((void *) (long) (i))
 
