@@ -15,11 +15,7 @@
 #define PLIB_PSTACK_H
 
 #include <stddef.h>
-
-struct PNode {
-	void *data;
-	struct PNode *next;
-};
+#include "PNode.h"
 
 struct PStack {
 	struct PNode *head;
