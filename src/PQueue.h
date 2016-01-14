@@ -24,11 +24,6 @@ struct PQueue {
 };
 
 /*
- * Specifies the type of functions passed to plib_stack_foreach().
- */
-typedef void (*PFunc)(void *data, void *user_data);
-
-/*
  *
  */
 struct PQueue *plib_queue_new();

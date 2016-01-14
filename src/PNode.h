@@ -19,4 +19,6 @@ struct PNode {
 	struct PNode *next;
 };
 
+typedef void (*PFunc)(void *data, void *user_data);
+
 #endif

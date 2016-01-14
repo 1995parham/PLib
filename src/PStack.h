@@ -23,11 +23,6 @@ struct PStack {
 };
 
 /*
- * Specifies the type of functions passed to plib_stack_foreach().
- */
-typedef void (*PFunc)(void *data, void *user_data);
-
-/*
  *
  */
 struct PStack *plib_stack_new();
