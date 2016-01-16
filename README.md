@@ -2,6 +2,7 @@
 ## Introduction
 Parham Personal C Library :) written just for fun ... This library contains
 useful functions and data structure.
+
 ## PString
 ### Functions
 #### Tokenizer
@@ -31,3 +32,5 @@ struct PStack {
 };
 ```
 The PStack struct is used for stack metadata.
+## Pthread Debugging
+If you want to debug our thread based library used `valgrind --tool=helgrind`.
