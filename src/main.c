@@ -20,6 +20,7 @@
 #include "PString.h"
 #include "PTypes.h"
 #include "PAQueue.h"
+#include "PPThread.h"
 
 void *reader(void *p)
 {
@@ -33,6 +34,13 @@ void *writer(void *p)
 {
 	struct PAQueue *aq = (struct PAQueue *) p;
 	plib_aqueue_push(aq, INT_TO_POINTER(10));
+	pthread_exit(NULL);
+}
+
+void *helloer(void *p)
+{
+	int integer = POINTER_TO_INT(p);
+	printf("Hello from %d\n", integer);
 	pthread_exit(NULL);
 }
 
@@ -62,12 +70,22 @@ int main(int argc, char *argv[])
 	{
 		struct PAQueue *aq = plib_aqueue_new();
 		pthread_t t1, t2;
-		void *result;
 	
 		pthread_create(&t1, NULL, reader, aq);
 		pthread_create(&t2, NULL, writer, aq);
-		pthread_join(t1, &result);
-		pthread_join(t2, &result);
+		pthread_join(t1, NULL);
+		pthread_join(t2, NULL);
+	}
+
+	/* PPThread Power :) */
+	{
+		struct PPThread *pt = plib_ppthread_create(2);
+		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(1));
+		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(2));
+		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(3));
+		plib_ppthread_add_work(pt, helloer, INT_TO_POINTER(4));
+		plib_ppthread_start(pt);
+		plib_ppthread_wait(pt);
 	}
 
 	/* PString Power :) */

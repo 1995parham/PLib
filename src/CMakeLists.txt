@@ -7,9 +7,9 @@
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
 add_library(PLib PStack.c PStack.h PTypes.h PLog.c PLog.h
-        PString.c PString.h PQueue.c PQueue.h PNode.h PAQueue.c PAQueue.h)
+	PString.c PString.h PQueue.c PQueue.h PNode.h PAQueue.c PAQueue.h PPThread.h PPThread.c)
 add_executable(Plib.out main.c PStack.c PStack.h PTypes.h PLog.c PLog.c
-        PString.c PString.h PQueue.c PQueue.h PNode.h PAQueue.c PAQueue.h)
+	PString.c PString.h PQueue.c PQueue.h PNode.h PAQueue.c PAQueue.h PPThread.h PPThread.c)
 
 target_link_libraries(pthread)
 
