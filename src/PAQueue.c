@@ -39,3 +39,12 @@ void *plib_aqueue_pop(struct PAQueue *aq)
 	pthread_mutex_unlock(aq->qlock);
 	return data;
 }
+
+size_t plib_aqueue_size(struct PAQueue *aq)
+{
+	size_t size;
+	pthread_mutex_lock(aq->qlock);
+	size = aq->q->size;
+	pthread_mutex_unlock(aq->qlock);
+	return size;
+}

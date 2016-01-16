@@ -42,6 +42,11 @@ void *plib_aqueue_pop(struct PAQueue *aq);
 /*
  *
  */
+size_t plib_aqueue_size(struct PAQueue *aq);
+
+/*
+ *
+ */
 void plib_aqueue_foreach(struct PAQueue *aq, void *user_data, PFunc func);
 
 
