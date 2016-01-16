@@ -26,22 +26,22 @@ struct PQueue {
 /*
  *
  */
-struct PQueue *plib_queue_new();
+struct PQueue *plib_queue_new(void);
 
 /*
  *
  */
-void plib_queue_push(struct PQueue *s, void *data);
+void plib_queue_push(struct PQueue *q, void *data);
 
 /*
  *
  */
-void *plib_queue_pop(struct PQueue *s);
+void *plib_queue_pop(struct PQueue *q);
 
 /*
  *
  */
-void plib_queue_foreach(struct PQueue *s, void *user_data, PFunc func);
+void plib_queue_foreach(struct PQueue *q, void *user_data, PFunc func);
 
 
 #endif
