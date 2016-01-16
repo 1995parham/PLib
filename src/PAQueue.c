@@ -19,6 +19,7 @@
 struct PAQueue *plib_aqueue_new(void)
 {
 	struct PAQueue *new = malloc(sizeof(struct PAQueue));
+	new->qlock = malloc(sizeof(pthread_mutex_t));
 	new->q = plib_queue_new();
 	pthread_mutex_init(new->qlock, NULL);
 	return new;
