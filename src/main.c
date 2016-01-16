@@ -14,11 +14,27 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <pthread.h>
 #include "PStack.h"
 #include "PQueue.h"
 #include "PString.h"
-#include "types.h"
+#include "PTypes.h"
+#include "PAQueue.h"
 
+void *reader(void *p)
+{
+	struct PAQueue *aq = (struct PAQueue *) p;
+	while(!plib_aqueue_size(aq));
+	printf("reader: %d\n", POINTER_TO_INT(plib_aqueue_pop(aq)));
+	pthread_exit(NULL);
+}
+
+void *writer(void *p)
+{
+	struct PAQueue *aq = (struct PAQueue *) p;
+	plib_aqueue_push(aq, INT_TO_POINTER(10));
+	pthread_exit(NULL);
+}
 
 int main(int argc, char *argv[])
 {
@@ -42,6 +58,18 @@ int main(int argc, char *argv[])
 		printf("%d\n", POINTER_TO_INT(plib_queue_pop(q)));
 	}
 
+	/*PAQueue Power :) */
+	{
+		struct PAQueue *aq = plib_aqueue_new();
+		pthread_t t1, t2;
+		void *result;
+	
+		pthread_create(&t1, NULL, reader, aq);
+		pthread_create(&t2, NULL, writer, aq);
+		pthread_join(t1, &result);
+		pthread_join(t2, &result);
+	}
+
 	/* PString Power :) */
 	{
 		char *str = "123a123bb123ccc123dddd123eeeee123ffffff123";
@@ -56,6 +84,6 @@ int main(int argc, char *argv[])
 		printf("Enter your password: ");
 		plib_fgetpass(password, sizeof(password), stdin);
 		password[strlen(password) - 1] = 0;
-		printf("U enter: %s", password);
+		printf("U enter: %s\n", password);
 	}
 }
