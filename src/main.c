@@ -22,6 +22,8 @@
 #include "PAQueue.h"
 #include "PPThread.h"
 
+#include "PConfig.h"
+
 void *reader(void *p)
 {
 	struct PAQueue *aq = (struct PAQueue *) p;
@@ -47,6 +49,12 @@ void *hello(void *p)
 int main(int argc, char *argv[])
 {
 	int i;
+
+	/* PLib version information :D */
+	{
+		printf("In the name of God\n");
+		printf("Welcome to PLib %d.%d\n", PLib_MAJOR_VERSION, PLib_MINOR_VERSION);
+	}
 
 	/* PStack Power :) */
 	{
