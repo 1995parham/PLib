@@ -18,7 +18,13 @@ add_subdirectory(src)
 
 # The version number
 set(PLib_MAJOR_VERSION 1)
-set(Plib_MINOR_VERSION 0)
+set(PLib_MINOR_VERSION 2)
+
+# Configuration header file
+configure_file(
+	"${PROJECT_SOURCE_DIR}/PConfig.h.in"
+	"${PROJECT_BINARY_DIR}/PConfig.h"
+	)
 
 # Add personal c flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O0 -g -std=gnu11 ")
