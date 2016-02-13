@@ -32,5 +32,17 @@ struct PStack {
 };
 ```
 The PStack struct is used for stack metadata.
+## PAQueue
+PLib Asynchronous Queue is a thread safe queue that use mutex in order
+to lock accesses.
+### Types and Values
+#### struct PAQueue
+```c
+struct PAQueue {
+	struct PQueue *q;
+	pthread_mutex_t *qlock;
+};
+```
+The PAQueue struct is used for asynchronous queue metadata.
 ## Pthread Debugging
 If you want to debug our thread based library used `valgrind --tool=helgrind`.
